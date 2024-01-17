@@ -16,3 +16,5 @@ t.Helper() is needed to tell the test suite that this method is a helper. By doi
 - It will be assigned the "zero" value. This depends on the type, for example ints are 0 and for strings it is "".
 - You can return whatever it's set to by just calling return rather than return prefix.
 - This will display in the Go Doc for your function so it can make the intent of your code clearer.
+
+*It is important to question the value of your tests. It should not be a goal to have as many tests as possible, but rather to have as much confidence as possible in your code base. Having too many tests can turn in to a real problem and it just adds more overhead in maintenance. Every test has a cost.*
