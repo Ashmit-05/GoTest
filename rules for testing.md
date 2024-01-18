@@ -24,3 +24,9 @@ t.Helper() is needed to tell the test suite that this method is a helper. By doi
 ## A note on Methods & Interfaces
 1. Methods are very similar to functions but they are called by invoking them on an instance of a particular type. Where you can just call functions wherever you like, such as Area(rectangle) you can only call methods on "things".
 2. Interfaces are a very powerful concept in statically typed languages like Go because they allow you to make functions that can be used with different types and create highly-decoupled code whilst still maintaining type-safety.
+
+- Rectangle has a method called Area that returns a float64 so it satisfies the Shape interface
+- Circle has a method called Area that returns a float64 so it satisfies the Shape interface
+- string does not have such a method, so it doesn't satisfy the interface
+etc.
+In Go interface resolution is implicit. If the type you pass in matches what the interface is asking for, it will compile.
