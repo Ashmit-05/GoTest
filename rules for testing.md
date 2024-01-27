@@ -42,11 +42,20 @@ Therefore, you should never initialize an empty map variable:
 > var m map[string]string
 
 Instead, you can initialize an empty map like we were doing above, or use the make keyword to create a map for you:
-***
+```
 var dictionary = map[string]string{}
 
 // OR
 
 var dictionary = make(map[string]string)
-***
+```
 Both approaches create an empty hash map and point dictionary at it. Which ensures that you will never get a runtime panic.
+
+## Concurrency
+[This is a really cool resource](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/concurrency)
+Now we can finally talk about concurrency which, for the purposes of the following, means "having more than one thing in progress." This is something that we do naturally everyday.
+For instance, this morning I made a cup of tea. I put the kettle on and then, while I was waiting for it to boil, I got the milk out of the fridge, got the tea out of the cupboard, found my favourite mug, put the teabag into the cup and then, when the kettle had boiled, I put the water in the cup.
+What I didn't do was put the kettle on and then stand there blankly staring at the kettle until it boiled, then do everything else once the kettle had boiled.
+If you can understand why it's faster to make tea the first way, then you can understand how we will make CheckWebsites faster. Instead of waiting for a website to respond before sending a request to the next website, we will tell our computer to make the next request while it is waiting.
+Normally in Go when we call a function `doSomething()` we wait for it to return (even if it has no value to return, we still wait for it to finish). We say that this operation is blocking - it makes us wait for it to finish. An operation that does not block in Go will run in a separate process called a goroutine. Think of a process as reading down the page of Go code from top to bottom, going 'inside' each function when it gets called to read what it does. When a separate process starts, it's like another reader begins reading inside the function, leaving the original reader to carry on going down the page.
+To tell Go to start a new goroutine we turn a function call into a go statement by putting the keyword `go` in front of it: `go doSomething()`.
