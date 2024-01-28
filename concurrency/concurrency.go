@@ -1,5 +1,10 @@
 package concurrency
 
+import (
+	"net/http"
+	"time"
+)
+
 // import "time"
 
 type WebsiteChecker func(string) bool
@@ -27,4 +32,22 @@ func CheckWebsites(wc WebsiteChecker, urls []string) map[string]bool {
   // time.Sleep(2 * time.Second)
 
   return results
+}
+
+func Racer(a, b string) (winner string) {
+  aDuration := measureResponseTime(a)
+  bDuration := measureResponseTime(b)
+
+	if aDuration < bDuration {
+		return a
+	}
+
+	return b
+}
+
+func measureResponseTime(a string) time.Duration {
+  aDuration := time.Now()
+  http.Get(a)
+  startA := time.Since(aDuration)
+  return startA
 }
