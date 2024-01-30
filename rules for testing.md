@@ -31,6 +31,12 @@ r string does not have such a method, so it doesn't satisfy the interface
 etc.
 In Go interface resolution is implicit. If the type you pass in matches what the interface is ksking for, it will compile.
 
+### More on Interfaces
+We have enjoyed the type-safety that Go has offered us in terms of functions that work with known types, such as string, int and our own types like BankAccount.
+This means that we get some documentation for free and the compiler will complain if you try and pass the wrong type to a function.
+You may come across scenarios though where you want to write a function where you don't know the type at compile time.
+Go lets us get around this with the type interface{} which you can think of as just any type (in fact, in Go any is an alias for interface{}).
+
 ## Maps
 An interesting property of maps is that you can modify them without passing as an address to it (e.g &myMap)
 This may make them feel like a "reference type", but as Dave Cheney describes they are not.
